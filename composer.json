@@ -1,0 +1,20 @@
+{
+    "name": "strukt/fs",
+    "description": "Strukt Filesystem",
+    "license": "MIT",
+    "authors": [
+
+        {
+            "name": "Moderator",
+            "email": "pitsolu@gmail.com"
+        }
+    ],
+    "require": {
+
+        "php": ">=5.6.2"
+    },
+    "autoload": {
+
+        "psr-0": { "Strukt\\": "src/"}
+    }
+}
