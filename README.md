@@ -1,6 +1,11 @@
 Strukt Fs
 =========
 
+[![Latest Stable Version](https://poser.pugx.org/strukt/fs/v/stable)](https://packagist.org/packages/strukt/fs)
+[![Total Downloads](https://poser.pugx.org/strukt/fs/downloads)](https://packagist.org/packages/strukt/fs)
+[![Latest Unstable Version](https://poser.pugx.org/strukt/fs/v/unstable)](https://packagist.org/packages/strukt/fs)
+[![License](https://poser.pugx.org/strukt/fs/license)](https://packagist.org/packages/strukt/fs)
+
 Basic filesystem functionality. 
 
 ## Usage
