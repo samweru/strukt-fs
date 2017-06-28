@@ -1,6 +1,7 @@
 Strukt Fs
 =========
 
+[![Build Status](https://travis-ci.org/pitsolu/strukt-fs.svg?branch=master)](https://packagist.org/packages/strukt/fs)
 [![Latest Stable Version](https://poser.pugx.org/strukt/fs/v/stable)](https://packagist.org/packages/strukt/fs)
 [![Total Downloads](https://poser.pugx.org/strukt/fs/downloads)](https://packagist.org/packages/strukt/fs)
 [![Latest Unstable Version](https://poser.pugx.org/strukt/fs/v/unstable)](https://packagist.org/packages/strukt/fs)
