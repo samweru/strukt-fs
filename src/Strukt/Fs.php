@@ -260,4 +260,26 @@ class Fs{
 
 		self::copyRecur($source, $dest);
 	}
+
+	public function listFilesRecur($path){
+
+	    $rItrItr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+
+		$files = []; 
+
+		foreach ($rItrItr as $file) {
+
+		    if ($file->isDir())
+		        continue;
+
+		    $files[] = $file->getPathname(); 
+		}
+
+		return $files;
+	}
+
+	public function lsfr($path){
+
+		return self::listFilesRecur($path);
+	}
 }
