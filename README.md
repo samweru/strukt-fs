@@ -27,4 +27,6 @@ Strukt\Fs::isWritable(file) //Check If File Is Writeable
 Strukt\Fs::isReadable(file) //Check If File is Readable
 Strukt\Fs::copyRecur(source,destination) //Copy recursively
 Strukt\Fs::cpr(source,destination) //Alias for copyRecur
+Strukt\Fs::listFilesRecur(path) //List directory files recursively
+Strukt\Fs::lsr(path) //Alias for listFilesRecur
 ```

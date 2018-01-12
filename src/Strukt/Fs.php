@@ -1,4 +1,4 @@
-<?php 
+-<?php 
 
 namespace Strukt;
 
@@ -261,6 +261,11 @@ class Fs{
 		self::copyRecur($source, $dest);
 	}
 
+	/**
+	* List files recursively
+	*
+	* @param string $path The path to directory
+	*/
 	public function listFilesRecur($path){
 
 	    $rItrItr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
@@ -278,7 +283,12 @@ class Fs{
 		return $files;
 	}
 
-	public function lsfr($path){
+	/**
+	* Alias Strukt/Fs::listFilesRecur
+	*
+	* @param string $path The path to directory
+	*/
+	public function lsr($path){
 
 		return self::listFilesRecur($path);
 	}
