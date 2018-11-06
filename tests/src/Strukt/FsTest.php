@@ -2,7 +2,7 @@
 
 use Strukt\Fs;
 
-class FsTest extends PHPUnit_Framework_TestCase{
+class FsTest extends PHPUnit\Framework\TestCase{
 
 	public function testMkdir(){
 
