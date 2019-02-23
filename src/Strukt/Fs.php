@@ -18,10 +18,12 @@ class Fs{
 	*/
 	public static function isFile($file){
 
-		if(!empty($file))
-			return file_exists($file);
+		if(empty($file))
+			return false;
 
-		return false;
+		clearstatcache();
+		
+		return file_exists($file);
 	}
 
 	/**
@@ -122,12 +124,15 @@ class Fs{
 	*
 	* @return boolean
 	*/
-	public static function overwrite($file, $contents){
+	public static function overwrite($file, $contents, $noLockEx = true){
 
-		if(self::isFile($file))
-			return file_put_contents($file, $contents, LOCK_EX);
+		if(!self::isFile($file))
+			return false;
 
-		return false;
+		if($noLockEx)
+			return file_put_contents($file, $contents);
+
+		return file_put_contents($file, $contents, LOCK_EX);
 	}
 
 	/**
@@ -138,12 +143,15 @@ class Fs{
 	*
 	* @return boolean
 	*/
-	public static function appendWrite($file, $contents){
+	public static function appendWrite($file, $contents, $noLockEx = true){
 
-		if(self::isFile($file))
-			return file_put_contents($file, $contents, FILE_APPEND | LOCK_EX);
+		if(!self::isFile($file))
+			return false;
 
-		return false;
+		if($noLockEx)
+			return file_put_contents($file, $contents, FILE_APPEND);
+
+		return file_put_contents($file, $contents, FILE_APPEND | LOCK_EX);
 	}
 
 	/**
@@ -189,9 +197,9 @@ class Fs{
 	*
 	* @return boolean
 	*/
-	public static function mkdir($dir){
+	public static function mkdir($dir, $mode = 0755, $recursive = true){
 
-		return @mkdir($dir, 0755, true);
+		return @mkdir($dir, $mode, $recursive);
 	}
 
 	/**
@@ -234,10 +242,10 @@ class Fs{
 
 	    if (is_dir($source)){
 
-	        $iterator = new RecursiveIteratorIterator(
+	        $iterator = new \RecursiveIteratorIterator(
 
-	            new RecursiveDirectoryIterator($source, RecursiveDirectoryIterator::SKIP_DOTS),
-	            RecursiveIteratorIterator::SELF_FIRST
+	            new \RecursiveDirectoryIterator($source, \RecursiveDirectoryIterator::SKIP_DOTS),
+	            \RecursiveIteratorIterator::SELF_FIRST
 	        );
 
 	        foreach ($iterator as $file)
@@ -266,7 +274,7 @@ class Fs{
 	*
 	* @param string $path The path to directory
 	*/
-	public function listFilesRecur($path){
+	public static function listFilesRecur($path){
 
 	    $rItrItr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
 
@@ -288,7 +296,7 @@ class Fs{
 	*
 	* @param string $path The path to directory
 	*/
-	public function lsr($path){
+	public static function lsr($path){
 
 		return self::listFilesRecur($path);
 	}

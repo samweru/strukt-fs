@@ -2,3 +2,4 @@ tmp
 php_errors.log
 vendor
 test.php
+composer.lock
