@@ -154,4 +154,4 @@ class FsTest extends PHPUnit\Framework\TestCase{
 
 		$this->assertEquals(count($ls), 15);
 	}
-}
+ }
