@@ -23,7 +23,7 @@ class Fs{
 
 		clearstatcache();
 		
-		return file_exists($file);
+		return is_file($file);
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Fs{
 	*/
 	public static function isPath($path){
 
-    	return self::isFile($path) || is_link($path);
+    	return is_dir($path);
   	}
 
   	/**
