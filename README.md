@@ -12,6 +12,7 @@ Basic filesystem functionality.
 ## Usage
 
 ```php
+Strukt\Fs::isDir(file) //Directory Exists
 Strukt\Fs::isFile(file) //File Exists
 Strukt\Fs::isPath(path) //Path Esists
 Strukt\Fs::cat(file) //Dump File Contents

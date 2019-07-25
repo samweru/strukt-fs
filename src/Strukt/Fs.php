@@ -10,6 +10,18 @@ namespace Strukt;
 class Fs{
 
 	/**
+	* Check if dir exists
+	*
+	* @param string $dir
+	*
+	* @return boolean
+	*/
+	public static function isDir($dir){
+
+		return is_dir($dir);
+	}
+
+	/**
 	* Check if file exists
 	*
 	* @param string $file
@@ -17,9 +29,6 @@ class Fs{
 	* @return boolean
 	*/
 	public static function isFile($file){
-
-		if(empty($file))
-			return false;
 
 		clearstatcache();
 		
@@ -35,7 +44,9 @@ class Fs{
 	*/
 	public static function isPath($path){
 
-    	return is_dir($path);
+		clearstatcache();
+
+    	return file_exists($path);
   	}
 
   	/**
@@ -211,7 +222,7 @@ class Fs{
 	*/
 	public static function isWritable($file){
 
-		if(self::isFile($file))
+		if(self::isPath($file))
 			return is_writable($file);
 
 		return false;
