@@ -5,7 +5,7 @@ use org\bovigo\vfs\vfsStream;
 
 class FsTest extends PHPUnit\Framework\TestCase{
 
-	public function setUp(){
+	public function setUp():void{
 
 		$structure = array(
 
