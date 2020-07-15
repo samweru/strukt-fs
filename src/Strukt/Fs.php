@@ -174,10 +174,19 @@ class Fs{
 	*/
 	public static function rm($file){
 
-		if(self::isFile($file))
-			return unlink($file);
+		if(preg_match("/\*/", $file)){
 
-		return false;
+			$files = glob($file);
+			if(empty($files))
+				return false;
+		}
+		else $files[] = $file;
+
+		foreach($files as $file)
+			if(self::isFile($file))
+				unlink($file);
+
+		return true;
 	}
 
 	/**
