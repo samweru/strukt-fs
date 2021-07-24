@@ -330,4 +330,24 @@ class Fs{
 
 		return strtoupper(substr(PHP_OS, 0, 3)) == "WIN";
 	}
+
+	/**
+	* Change directory separator according to operating system
+	*
+	* @return string
+	*/
+	public static function dirSep($path){
+
+		return preg_replace("/(\/|\\\)/", DIRECTORY_SEPARATOR, $path);
+	}
+
+	/**
+	* Alias for Strukt\Fs::dirsep
+	*
+	* @return string
+	*/
+	public static function ds($path){
+
+		return self::dirSep($path);
+	}
 }
