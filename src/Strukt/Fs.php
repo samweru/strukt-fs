@@ -350,4 +350,20 @@ class Fs{
 
 		return self::dirSep($path);
 	}
+
+	public static function tail(string $filepath, int $lines = 20){
+
+		$file = new \SplFileObject($filepath);
+		$file->seek(PHP_INT_MAX);
+		$total_lines = $file->key();
+		$file->seek($total_lines - $lines);
+
+		$ls = [];
+		while (!$file->eof()) {
+		    $ls[] = $file->current();
+		    $file->next();
+		}
+
+		return implode("", $ls);
+	}
 }
