@@ -366,12 +366,6 @@ class Fs{
 		if($lines >= $total_lines)
 			$nlines = 0;
 
-		print_r(array(
-			"nlines"=>$nlines,
-			"total_lines"=>$total_lines,
-			"lines"=>$lines
-		));
-
 		$file->seek($nlines);
 
 		$ls = [];
