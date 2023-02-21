@@ -351,12 +351,28 @@ class Fs{
 		return self::dirSep($path);
 	}
 
+	/**
+	* Read last lines of file
+	*
+	* @return string
+	*/
 	public static function tail(string $filepath, int $lines = 20){
 
 		$file = new \SplFileObject($filepath);
 		$file->seek(PHP_INT_MAX);
 		$total_lines = $file->key();
-		$file->seek($total_lines - $lines);
+
+		$nlines = $total_lines - $lines;
+		if($lines >= $total_lines)
+			$nlines = 0;
+
+		print_r(array(
+			"nlines"=>$nlines,
+			"total_lines"=>$total_lines,
+			"lines"=>$lines
+		));
+
+		$file->seek($nlines);
 
 		$ls = [];
 		while (!$file->eof()) {
