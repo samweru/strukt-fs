@@ -376,4 +376,89 @@ class Fs{
 
 		return implode("", $ls);
 	}
+
+	/**
+	* Zip a directory
+	*
+	* @return boolean
+	*/
+	public static function zip($path, $zipfile = null){
+
+		if(is_null($zipfile)){
+
+			$date = (new \DateTime())->format("YmdHis");
+			$rand = substr(sha1(rand()), 0, 10);
+			$zipfile = sprintf("%s-%s.zip", $date, $rand);
+		}
+
+		/**
+		* @source https://bit.ly/3I6Cdu1
+		*/
+		// Get real path for our folder
+		$rootPath = realpath($path);
+
+		// Initialize archive object
+		$zip = new \ZipArchive();
+		$zip->open($zipfile, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+		// Create recursive directory iterator
+		/** @var SplFileInfo[] $files */
+		$files = new \RecursiveIteratorIterator(
+		    new \RecursiveDirectoryIterator($rootPath),
+		    \RecursiveIteratorIterator::LEAVES_ONLY
+		);
+
+		foreach ($files as $name => $file){
+
+		    // Skip directories (they would be added automatically)
+		    if (!$file->isDir()){
+
+		        // Get real and relative path for current file
+		        $filePath = $file->getRealPath();
+		        $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+		        // Add current file to archive
+		        $zip->addFile($filePath, $relativePath);
+		    }
+		}
+
+		// Zip archive will be created only after closing object
+		$zip->close();
+
+		return Fs::isFile($zipfile);
+	}
+
+	/**
+	* Unzip dir
+	*
+	* @return boolean
+	*/
+	public static function unzip(string $zipfile, string $topath = "./"){
+
+		$unzipdir = trim($zipfile, ".zip");
+
+		$finalpath = sprintf(Fs::ds('%s%s'), $topath, $unzipdir);
+
+		$zip = new \ZipArchive;
+		$zip->open(realpath($zipfile));
+		$zip->extractTo($finalpath);
+		$zip->close(); 
+
+		return Fs::isDir($finalpath);
+	}
+
+	/**
+	* List what is in a *.zip file
+	* 
+	* @return string
+	*/
+	public static function lsz($zippath){
+
+		$zip = new \ZipArchive;
+		if ($zip->open($zippath) == TRUE)
+			for ($i = 0; $i < $zip->numFiles; $i++) 
+				$files[] = $zip->getNameIndex($i);
+
+		return implode("\n", $files);
+	}
 }
