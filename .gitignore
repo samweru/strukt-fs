@@ -3,3 +3,4 @@ php_errors.log
 vendor
 test.php
 composer.lock
+.phpunit.result.cache

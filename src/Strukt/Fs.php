@@ -290,11 +290,31 @@ class Fs{
 	}
 
 	/**
+	* List files
+	*
+	* @param string $path The path to directory
+	*/
+	public static function listFiles($path="."){
+
+		return array_values(array_diff(scandir($path), array('..', '.')));
+	}
+
+	/**
+	* Alias of Strukt/Fs::listFiles
+	*
+	* @param string $path The path to directory
+	*/
+	public static function ls($path="."){
+
+		return self::listFiles($path);
+	}
+
+	/**
 	* List files recursively
 	*
 	* @param string $path The path to directory
 	*/
-	public static function listFilesRecur($path){
+	public static function listFilesRecur($path="."){
 
 	    $rItrItr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
 
@@ -312,11 +332,11 @@ class Fs{
 	}
 
 	/**
-	* Alias Strukt/Fs::listFilesRecur
+	* Alias of Strukt/Fs::listFilesRecur
 	*
 	* @param string $path The path to directory
 	*/
-	public static function lsr($path){
+	public static function lsr($path="."){
 
 		return self::listFilesRecur($path);
 	}

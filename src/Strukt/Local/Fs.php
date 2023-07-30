@@ -218,11 +218,31 @@ class Fs{
 	}
 
 	/**
+	* List files
+	*
+	* @param string $path The path to directory
+	*/
+	public function listFiles($path="."){
+
+	    return CoreFs::listFiles($this->path($path));
+	}
+
+	/**
+	* Alias of Strukt/Fs::listFiles
+	*
+	* @param string $path The path to directory
+	*/
+	public function ls($path="."){
+
+		return self::listFiles($path);
+	}
+
+	/**
 	* List files recursively
 	*
 	* @param string $path The path to directory
 	*/
-	public function listFilesRecur($path){
+	public function listFilesRecur($path="."){
 
 	    return CoreFs::listFilesRecur($this->path($path));
 	}
@@ -232,7 +252,7 @@ class Fs{
 	*
 	* @param string $path The path to directory
 	*/
-	public function lsr($path){
+	public function lsr($path="."){
 
 		return self::listFilesRecur($path);
 	}
