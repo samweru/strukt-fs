@@ -9,4 +9,9 @@ if(!function_exists("fs")){
 
 		return new Strukt\Fs();
 	}
+
+	function tail(string $filepath, int $lines = 20){
+
+		return Strukt\Fs::tail($filepath, $lines);
+	}
 }
