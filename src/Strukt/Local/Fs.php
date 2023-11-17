@@ -15,9 +15,8 @@ class Fs{
 
 	public function __construct(string $path){
 
-		$phar = \Phar::running();
-		$phar_path = sprintf("phar://%s", $phar);
-		if(!empty($phar))
+		$phar_path = \Phar::running();
+		if(!empty($phar_path))
 			$path = sprintf("%s/%s", rtrim($phar_path, "/"), trim($path, "/"));
 
 		$this->path = CoreFs::ds($path);
@@ -303,5 +302,10 @@ class Fs{
 	public function lsz($zippath){
 
 		return CoreFs::lsz($this->path($zippath));
+	}
+
+	public function ini(string $path){
+
+		return CoreFs::ini($this->path($path));
 	}
 }
