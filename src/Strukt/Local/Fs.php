@@ -15,6 +15,11 @@ class Fs{
 
 	public function __construct(string $path){
 
+		$phar = Phar::running()
+		$phar_path = sprintf("phar://%s", $phar);
+		if(!empty($phar))
+			$path = sprintf("%s/%s", rtrim($phar_path, "/"), trim($path, "/"));
+
 		$this->path = CoreFs::ds($path);
 	}
 
