@@ -25,6 +25,9 @@ class Fs{
 
 	protected function path($path){
 
+		if(trim($path) == ".")
+			return $this->path;
+
 		return CoreFs::ds(sprintf("%s/%s", rtrim($this->path, "/"), trim($path, "/")));
 	}
 
