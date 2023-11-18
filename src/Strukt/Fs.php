@@ -482,8 +482,23 @@ class Fs{
 		return implode("\n", $files);
 	}
 
+	/**
+	* Parse initialization file
+	*
+	* @return string
+	*/
 	public static function ini(string $path){
 
 		return parse_ini_file($path);
 	}
+
+	/**
+	* Require
+	*
+	* @return string
+	*/
+	public static function req(string $path){
+
+		return require($path);
+	}	
 }

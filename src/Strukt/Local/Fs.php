@@ -304,8 +304,23 @@ class Fs{
 		return CoreFs::lsz($this->path($zippath));
 	}
 
+	/**
+	* Parse initialization file
+	*
+	* @return string
+	*/
 	public function ini(string $path){
 
 		return CoreFs::ini($this->path($path));
+	}
+
+	/**
+	* Require
+	*
+	* @return string
+	*/
+	public function req(string $path){
+
+		return CoreFs::req($this->path($path));
 	}
 }
