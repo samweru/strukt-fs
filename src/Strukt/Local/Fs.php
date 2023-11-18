@@ -22,7 +22,7 @@ class Fs{
 		$this->path = CoreFs::ds($path);
 	}
 
-	protected function path($path){
+	public function path($path){
 
 		if(trim($path) == ".")
 			return $this->path;
