@@ -15,7 +15,7 @@ class Fs{
 
 	public function __construct(string $path){
 
-		$phar_path = \Phar::running();
+		$phar_path = is_null($path)?getcwd():\Phar::running();
 		if(!empty($phar_path))
 			$path = sprintf("%s/%s", rtrim($phar_path, "/"), trim($path, "/"));
 
