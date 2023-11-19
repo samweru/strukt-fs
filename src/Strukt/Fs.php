@@ -489,8 +489,6 @@ class Fs{
 	*/
 	public static function ini(string $path):array{
 
-		print_r($path);
-
 		return parse_ini_file($path);
 	}
 
