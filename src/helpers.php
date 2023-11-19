@@ -14,4 +14,14 @@ if(!function_exists("fs")){
 
 		return Strukt\Fs::tail($filepath, $lines);
 	}
+
+	function ds(string $path){
+
+		return Strukt\Fs::ds(sprintf("%s/", trim($path, "/")));
+	}
+
+	function path_exists(string $path){
+
+		return fs()->isDir($path) || fs()->isPath($path);
+	}
 }
