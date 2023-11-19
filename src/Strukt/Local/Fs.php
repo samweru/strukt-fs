@@ -15,17 +15,10 @@ class Fs{
 
 	public function __construct(string $path){
 
-		$phar_path = is_null($path)?getcwd():\Phar::running();
-		if(!empty($phar_path))
-			$path = sprintf("%s/%s", rtrim($phar_path, "/"), trim($path, "/"));
-
 		$this->path = CoreFs::ds($path);
 	}
 
 	public function path($path){
-
-		if(trim($path) == ".")
-			return $this->path;
 
 		return CoreFs::ds(sprintf("%s/%s", rtrim($this->path, "/"), trim($path, "/")));
 	}

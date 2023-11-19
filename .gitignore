@@ -4,3 +4,5 @@ vendor
 test.php
 composer.lock
 .phpunit.result.cache
+flight
+box.json

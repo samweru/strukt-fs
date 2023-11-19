@@ -7,7 +7,7 @@ if(!function_exists("fs")){
 		if(!is_null($dir))
 			return new Strukt\Local\Fs(Strukt\Fs::ds($dir));
 
-		return new Strukt\Fs();
+		return new Strukt\Fs;
 	}
 
 	function tail(string $filepath, int $lines = 20){
