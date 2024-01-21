@@ -487,9 +487,9 @@ class Fs{
 	*
 	* @return string
 	*/
-	public static function ini(string $path):array{
+	public static function ini(string $path, bool $sections = true):array{
 
-		return parse_ini_file($path);
+		return parse_ini_file($path, $sections);
 	}
 
 	/**

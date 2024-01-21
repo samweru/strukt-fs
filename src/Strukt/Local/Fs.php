@@ -302,9 +302,9 @@ class Fs{
 	*
 	* @return string
 	*/
-	public function ini(string $path){
+	public function ini(string $path, bool $sections = true){
 
-		return CoreFs::ini($this->path($path));
+		return CoreFs::ini($this->path($path), $sections);
 	}
 
 	/**
