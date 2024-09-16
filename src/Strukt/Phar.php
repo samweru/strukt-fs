@@ -4,13 +4,13 @@ namespace Strukt;
 
 class Phar{
 
-	public static function adapt(string $path){
+	public static function adapt(string $path = ""){
 
 		$phar_path = \Phar::running();
 
 		$pwd = !empty($phar_path)?$phar_path:getcwd();
 
-		return Fs::ds(sprintf("%s/%s", $pwd, $path));
+		return Fs::ds(trim(sprintf("%s/%s", $pwd, $path)));
 	}
 
 	/**

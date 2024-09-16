@@ -45,6 +45,9 @@ if(helper_add("phar")){
 
 			public function __construct(string $path = null){
 
+				if(is_null($path))
+					$path = "";
+
 				$this->path = $path;
 			}
 
@@ -55,10 +58,7 @@ if(helper_add("phar")){
 
 			public function adapt(){
 
-				if(!is_null($this->path))
-					return Strukt\Phar::adapt($this->path);
-
-				return null;
+				return Strukt\Phar::adapt($this->path);
 			}
 		};
 	}
