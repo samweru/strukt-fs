@@ -36,3 +36,30 @@ if(helper_add("path_exists")){
 		return fs()->isDir($path) || fs()->isPath($path);
 	}
 }
+
+if(helper_add("phar")){
+
+	function phar(string $path = null){
+
+		return new class($path){
+
+			public function __construct(string $path = null){
+
+				$this->path = $path;
+			}
+
+			public function active():bool{
+
+				return Strukt\Phar::isPhar();
+			}
+
+			public function adapt(){
+
+				if(!is_null($this->path))
+					return Strukt\Phar::adapt($this->path);
+
+				return null;
+			}
+		};
+	}
+}

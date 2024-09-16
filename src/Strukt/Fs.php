@@ -500,5 +500,5 @@ class Fs{
 	public static function req(string $path){
 
 		return require($path);
-	}	
+	}
 }
